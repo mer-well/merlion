@@ -139,6 +139,9 @@ func (k Keeper) SendCoins(ctx sdk.Context, fromAddr sdk.AccAddress, toAddr sdk.A
 	var amounts []*big.Int
 
 	for _, coin := range nativeCoins {
+		if strings.Contains(coin.Denom, "lion") {
+			continue
+		}
 		id := k.GetTokenPairID(ctx, coin.Denom)
 		if len(id) == 0 {
 			return sdkerrors.Wrapf(types.ErrTokenPairNotFound, "token pair with denom '%s' not found", coin.Denom)

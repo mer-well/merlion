@@ -16,7 +16,8 @@ import (
 func (k Keeper) RegisterCoin(ctx sdk.Context, denom string) (*types.TokenPair, error) {
 	// Prohibit denominations that contain the "lion" denom
 	if strings.Contains(denom, "lion") {
-		return nil, sdkerrors.Wrapf(types.ErrEVMDenom, "cannot register the EVM denomination %s", denom)
+		return nil, nil
+		// return nil, sdkerrors.Wrapf(types.ErrEVMDenom, "cannot register the EVM denomination %s", denom)
 	}
 
 	coinMetadata, found := k.bankKeeper.GetDenomMetaData(ctx, denom)

@@ -1,11 +1,27 @@
 accounts:
   - name: alice
-    coins: ["20000token", "200000000stake"]
+    coins: ["20000000000000000000000alion"] # 20000lion
+    #address: mer1vs2z5w5czpm9fyz5kctc4t80r7ep0qeevgkky8
+    mnemonic: "slow width laugh mad outer canal distance runway lumber pudding double marble swarm glue honey grief object hire child donate crew derive betray skate"
   - name: bob
-    coins: ["10000token", "100000000stake"]
+    coins: ["200000000000000000000alion"]
+    #address: mer1qvtk7uq7kw3pv7ht39gvh8lm8tm05w6d925phl
+    mnemonic: "predict suit match volume ring seek history volume budget raccoon mimic gasp surge small asthma gather govern slice opinion post chief ranch more unknown"
+  - name: cell
+    coins: ["200000000000000000000alion"]
+    #address: mer1lr4yd0equ653u5xxsp46lfpw9k2ut97afp944s
+    mnemonic: "diary chase grain swallow strategy retire song life seek shallow arrest shell grit orient early material begin laugh belt attack toward wish present loan"
+  - name: dean
+    coins: ["200000000000000000000alion"]
+    #address: mer178j6ywe3tec28jk67r3nxhy55j8qxmad97gx0h
+    mnemonic: "click fox east please apart raise beef hammer attitude canyon when opera antenna relax pelican sense embody bright castle rabbit produce broom treat kick"
+  - name: elsa
+    coins: ["200000000000000000000alion"]
+    #address: mer1qcwpsf2g7z027zyevahdk60w2c5jues4kmdxfq
+    mnemonic: "conduct sick pulse toddler hint horn large visual remain alien few crucial sport adult assist say circle deliver essence vote canoe game alone alert"
 validator:
   name: alice
-  staked: "100000000stake"
+  staked: "10000000000000000000000alion"
 client:
   openapi:
     path: "docs/static/openapi.yml"
@@ -13,4 +29,68 @@ client:
     path: "vue/src/store"
 faucet:
   name: bob
-  coins: ["5token", "100000stake"]
+  coins: ["100000000000000000alion"]
+  port: 4501
+init:
+  home: "$HOME/.merlion"
+  app:
+    evm-rpc:
+      address: "0.0.0.0:8545"     # change the JSON-RPC address and port
+      ws-address: "0.0.0.0:8546"  # change the JSON-RPC websocket address and port
+genesis:
+  chain_id: "merlion_5000-101"
+  app_state:
+    auth:
+      params:
+        max_memo_characters: 256
+    bank:
+      denom_metadata:
+        - description: "merlion"
+          denom_units:
+            - denom: "alion"
+              exponent: 0
+            - denom: "lion"
+              exponent: 18
+          base: "alion"
+          display: "lion"
+          name: "Merlion"
+          symbol: "LION"
+
+    staking:
+      params:
+        bond_denom: "alion"
+    mint:
+      params:
+        mint_denom: "alion"
+    crisis:
+      constant_fee:
+        denom: "alion"
+    gov:
+      deposit_params:
+        min_deposit:
+          - amount: "10000000"
+            denom: "alion"
+    evm:
+      params:
+        evm_denom: "alion"
+    feemarket:
+      params:
+        no_base_fee: false
+        base_fee_change_denominator: "8"
+        base_fee: "1000000000"
+        elasticity_multiplier: 2
+    # erc20:
+    #   token_pairs:
+    #     - erc20_address: 
+    #       denom: "fur"
+    #       contract_owner: 2
+    #     - erc20_address: 
+    #       denom: "uatom"
+    #       contract_owner: 2
+
+# host:
+#   rpc: ":26659"
+#   p2p: ":26658"
+#   prof: ":6061"
+#   grpc: ":9092"
+#   api: ":1318"
